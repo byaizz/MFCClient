@@ -194,6 +194,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\FormMonitorView.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\FormNavigView.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\MainFrm.cpp"
 				>
 			</File>
@@ -237,6 +245,14 @@
 			>
 			<File
 				RelativePath=".\ChildFrm.h"
+				>
+			</File>
+			<File
+				RelativePath=".\FormMonitorView.h"
+				>
+			</File>
+			<File
+				RelativePath=".\FormNavigView.h"
 				>
 			</File>
 			<File
@@ -296,5 +312,9 @@
 		</File>
 	</Files>
 	<Globals>
+		<Global
+			Name="RESOURCE_FILE"
+			Value="PRAS_Client.rc"
+		/>
 	</Globals>
 </VisualStudioProject>

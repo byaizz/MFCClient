@@ -4,6 +4,8 @@
 #include "PRAS_Client.h"
 
 #include "ChildFrm.h"
+#include "FormNavigView.h"
+#include "FormMonitorView.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -15,6 +17,7 @@
 IMPLEMENT_DYNCREATE(CChildFrame, CMDIChildWnd)
 
 BEGIN_MESSAGE_MAP(CChildFrame, CMDIChildWnd)
+	ON_WM_SIZE()
 	ON_WM_MDIACTIVATE()
 END_MESSAGE_MAP()
 
@@ -67,7 +70,35 @@ void CChildFrame::Dump(CDumpContext& dc) const
 
 BOOL CChildFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 {
-	
+	CRect rcClient;
+	GetClientRect(&rcClient);
+	ScreenToClient(rcClient);
+
+	if (!m_wndSplitter.CreateStatic(this,1,2))//分割窗口，一行两列
+		return FALSE;
+
+	//创建左边视图
+	if (!m_wndSplitter.CreateView(0,
+									0,
+									RUNTIME_CLASS(CFormNavigView),
+									CSize(180,rcClient.Height()),
+									pContext))
+	{
+		return FALSE;
+	}
+
+
+	//创建右边视图
+	if (!m_wndSplitter.CreateView(0,
+									1,
+									RUNTIME_CLASS(CFormMonitorView),
+									CSize(rcClient.Width()-20,
+									rcClient.Height()-30),
+									pContext))
+	{
+		return FALSE;
+	}
+
 	return TRUE;
 }
 
