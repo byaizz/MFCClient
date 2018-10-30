@@ -3,3 +3,4 @@
 *.user
 /debug
 Debug
+/PRAS_Client/*.aps
