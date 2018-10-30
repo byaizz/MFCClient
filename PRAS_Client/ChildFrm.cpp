@@ -6,6 +6,7 @@
 #include "ChildFrm.h"
 #include "FormNavigView.h"
 #include "FormMonitorView.h"
+#include "PRAS_Definition.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -19,6 +20,7 @@ IMPLEMENT_DYNCREATE(CChildFrame, CMDIChildWnd)
 BEGIN_MESSAGE_MAP(CChildFrame, CMDIChildWnd)
 	ON_WM_SIZE()
 	ON_WM_MDIACTIVATE()
+	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 
@@ -70,6 +72,9 @@ void CChildFrame::Dump(CDumpContext& dc) const
 
 BOOL CChildFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 {
+	//启动计时器
+	SetTimer(COMP_TIMER_ID,1000,NULL);//设置计时器触发间隔1000ms，响应函数为默认响应
+
 	CRect rcClient;
 	GetClientRect(&rcClient);
 	ScreenToClient(rcClient);
@@ -81,7 +86,7 @@ BOOL CChildFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 	if (!m_wndSplitter.CreateView(0,
 									0,
 									RUNTIME_CLASS(CFormNavigView),
-									CSize(180,rcClient.Height()),
+									CSize(rcClient.Width()*0.4,rcClient.Height()),
 									pContext))
 	{
 		return FALSE;
@@ -92,8 +97,8 @@ BOOL CChildFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 	if (!m_wndSplitter.CreateView(0,
 									1,
 									RUNTIME_CLASS(CFormMonitorView),
-									CSize(rcClient.Width()-20,
-									rcClient.Height()-30),
+									CSize(rcClient.Width()*0.6,
+									rcClient.Height()),
 									pContext))
 	{
 		return FALSE;
@@ -106,3 +111,15 @@ BOOL CChildFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 
 
 // CChildFrame 消息处理程序
+
+void CChildFrame::OnTimer(UINT_PTR nIDEvent)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	if (nIDEvent == COMP_TIMER_ID)
+	{
+		static int sCount = 0;
+		TRACE("第 %d 次执行timer\n", sCount++);
+	}
+
+	CMDIChildWnd::OnTimer(nIDEvent);
+}

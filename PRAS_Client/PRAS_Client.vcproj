@@ -272,6 +272,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\PRAS_Definition.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Resource.h"
 				>
 			</File>

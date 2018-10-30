@@ -36,4 +36,5 @@ protected:
 	virtual BOOL OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext);
 private:
 	CSplitterWnd m_wndSplitter;//´°¿Ú·Ö¸îÆ÷
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 };
