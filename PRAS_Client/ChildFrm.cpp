@@ -76,8 +76,8 @@ BOOL CChildFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 	SetTimer(COMP_TIMER_ID,1000,NULL);//设置计时器触发间隔1000ms，响应函数为默认响应
 
 	CRect rcClient;
-	GetClientRect(&rcClient);
-	ScreenToClient(rcClient);
+	GetClientRect(&rcClient);//获取客户区坐标
+	ScreenToClient(rcClient);//转换屏幕坐标到客户区坐标，转换后坐标为相对于父窗口的坐标
 
 	if (!m_wndSplitter.CreateStatic(this,1,2))//分割窗口，一行两列
 		return FALSE;
@@ -118,7 +118,7 @@ void CChildFrame::OnTimer(UINT_PTR nIDEvent)
 	if (nIDEvent == COMP_TIMER_ID)
 	{
 		static int sCount = 0;
-		TRACE("第 %d 次执行timer\n", sCount++);
+		TRACE("第 %d 次执行timer\n", sCount++);//输出到output窗口
 	}
 
 	CMDIChildWnd::OnTimer(nIDEvent);

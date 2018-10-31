@@ -25,6 +25,19 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
 
 	DECLARE_MESSAGE_MAP()
+private:
+	// 过程监控按钮
+	CButton m_btnMonitor;
+	// 轧辊信息按钮
+	CButton m_btnRoll;
+	// 用户管理按钮
+	CButton m_btnUser;
+	// 轧机操作按钮
+	CButton m_btnOperation;
+	// 加热炉按钮
+	CButton m_btnFurnace;
+	// 系统退出按钮
+	CButton m_btnQuit;
 };
 
 

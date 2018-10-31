@@ -74,6 +74,7 @@ IDR_PRAS_ClientTYPE     ICON                    "res\\PRAS_ClientDoc.ico"
 //
 
 IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+IDB_BITMAP_ROLLWARE     BITMAP                  "res\\Rollware.bmp"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -210,11 +211,20 @@ BEGIN
     DEFPUSHBUTTON   "确定",IDOK,178,7,50,16,WS_GROUP
 END
 
-IDD_FORMNAVIGVIEW DIALOG  0, 0, 320, 200
+IDD_FORMNAVIGVIEW DIALOGEX 0, 0, 103, 297
 STYLE DS_SETFONT | WS_CHILD
-FONT 9, "宋体, MS Sans Serif"
+FONT 9, "宋体, MS Sans Serif", 0, 0, 0x0
 BEGIN
-    LTEXT           "TODO: 将窗体控件放置在此对话框上。",IDC_STATIC,24,42,280,8
+    CONTROL         130,IDC_STATIC,"Static",SS_BITMAP | SS_CENTERIMAGE,7,16,89,23
+    PUSHBUTTON      "过程监控",IDC_BUTTON_MONITOR,7,44,61,21
+    PUSHBUTTON      "轧辊信息",IDC_BUTTON_ROLL,7,67,62,18
+    PUSHBUTTON      "用户管理",IDC_BUTTON_USER,7,87,61,21
+    PUSHBUTTON      "轧机操作",IDC_BUTTON_OPERATION,7,113,61,18
+    PUSHBUTTON      "加热炉",IDC_BUTTON_FURNACE,7,138,61,19
+    PUSHBUTTON      "系统退出",IDC_BUTTON_QUIT,7,160,61,27
+    LTEXT           "静态",IDC_STATIC,32,194,17,8
+    LTEXT           "静态",IDC_STATIC,19,210,17,8
+    LTEXT           "静态",IDC_STATIC,22,228,17,8
 END
 
 IDD_FORMMONITORVIEW DIALOG  0, 0, 320, 200
@@ -283,9 +293,9 @@ BEGIN
     IDD_FORMNAVIGVIEW, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 313
+        RIGHTMARGIN, 96
         TOPMARGIN, 7
-        BOTTOMMARGIN, 193
+        BOTTOMMARGIN, 290
     END
 
     IDD_FORMMONITORVIEW, DIALOG

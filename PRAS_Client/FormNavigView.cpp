@@ -23,6 +23,12 @@ CFormNavigView::~CFormNavigView()
 void CFormNavigView::DoDataExchange(CDataExchange* pDX)
 {
 	CFormView::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_BUTTON_MONITOR, m_btnMonitor);
+	DDX_Control(pDX, IDC_BUTTON_ROLL, m_btnRoll);
+	DDX_Control(pDX, IDC_BUTTON_USER, m_btnUser);
+	DDX_Control(pDX, IDC_BUTTON_OPERATION, m_btnOperation);
+	DDX_Control(pDX, IDC_BUTTON_FURNACE, m_btnFurnace);
+	DDX_Control(pDX, IDC_BUTTON_QUIT, m_btnQuit);
 }
 
 BEGIN_MESSAGE_MAP(CFormNavigView, CFormView)
