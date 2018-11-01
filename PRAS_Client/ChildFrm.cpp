@@ -6,6 +6,10 @@
 #include "ChildFrm.h"
 #include "FormNavigView.h"
 #include "FormMonitorView.h"
+#include "FormRollView.h"
+#include "FormConfigView.h"
+#include "FormUserView.h"
+#include "FormFurnaceView.h"
 #include "PRAS_Definition.h"
 
 #ifdef _DEBUG
@@ -94,8 +98,7 @@ BOOL CChildFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 		return FALSE;
 	}
 
-
-	//创建右边视图
+	//创建右边视图，默认为monitor view
 	if (!m_wndSplitter.CreateView(0,
 									1,
 									RUNTIME_CLASS(CFormMonitorView),
@@ -117,11 +120,11 @@ BOOL CChildFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 void CChildFrame::OnTimer(UINT_PTR nIDEvent)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
-	if (nIDEvent == ID_TIMER_CHILDFRM)
-	{
-		static int sCount = 0;
-		TRACE("第 %d 次执行timer\n", sCount++);//输出到output窗口
-	}
+// 	if (nIDEvent == ID_TIMER_CHILDFRM)
+// 	{
+// 		static int sCount = 0;
+// 		TRACE("第 %d 次执行timer\n", sCount++);//输出到output窗口
+// 	}
 
 	CMDIChildWnd::OnTimer(nIDEvent);
 }
@@ -159,31 +162,53 @@ BOOL CChildFrame::SwitchRightView(WPARAM wParam)
 	case IDView::ID_VIEW_MONITOR:
 		{
 			m_wndSplitter.CreateView(0,
-										1,
-										RUNTIME_CLASS(CFormMonitorView),
-										CSize(0,0),
-										NULL);
+				1,
+				RUNTIME_CLASS(CFormMonitorView),
+				CSize(0,0),
+				NULL);
 			break;
 		}
 	case IDView::ID_VIEW_ROLL:
 		{
+			m_wndSplitter.CreateView(0,
+				1,
+				RUNTIME_CLASS(CFormRollView),
+				CSize(0,0),
+				NULL);
 			break;
 		}
-	case IDView::ID_VIEW_OPERATION:
+	case IDView::ID_VIEW_CONFIG:
 		{
+			m_wndSplitter.CreateView(0,
+				1,
+				RUNTIME_CLASS(CFormConfigView),
+				CSize(0,0),
+				NULL);
 			break;
 		}
 	case IDView::ID_VIEW_USER:
 		{
+			m_wndSplitter.CreateView(0,
+				1,
+				RUNTIME_CLASS(CFormUserView),
+				CSize(0,0),
+				NULL);
 			break;
 		}
 	case IDView::ID_VIEW_FURNACE:
 		{
+			m_wndSplitter.CreateView(0,
+				1,
+				RUNTIME_CLASS(CFormFurnaceView),
+				CSize(0,0),
+				NULL);
 			break;
 		}
 	default:
 		break;
 	}
 
+	m_wndSplitter.RecalcLayout();
+ 
 	return TRUE;
 }

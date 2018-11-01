@@ -34,22 +34,24 @@ private:
 	// 用户管理按钮
 	CButton m_btnUser;
 	// 轧机操作按钮
-	CButton m_btnOperation;
+	CButton m_btnConfig;
 	// 加热炉按钮
 	CButton m_btnFurnace;
 	// 系统退出按钮
 	CButton m_btnQuit;
 	virtual void OnInitialUpdate();
 	void UpdataCurrentTime();
+	void SetButtonStatus(int iViewID, BOOL status);
 	afx_msg void OnBnClickedButtonQuit();
 	afx_msg void OnBnClickedButtonMonitor();
 	afx_msg void OnBnClickedButtonRoll();
 	afx_msg void OnBnClickedButtonUser();
-	afx_msg void OnBnClickedButtonOperation();
+	afx_msg void OnBnClickedButtonConfig();
 	afx_msg void OnBnClickedButtonFurnace();
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	// 用于显示当前时间
 	CStatic m_staticCurrentTime;
+	int m_lastViewID;
 };
 
 

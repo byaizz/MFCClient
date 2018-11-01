@@ -194,11 +194,27 @@
 				>
 			</File>
 			<File
+				RelativePath=".\FormConfigView.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\FormFurnaceView.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\FormMonitorView.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\FormNavigView.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\FormRollView.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\FormUserView.cpp"
 				>
 			</File>
 			<File
@@ -248,11 +264,27 @@
 				>
 			</File>
 			<File
+				RelativePath=".\FormConfigView.h"
+				>
+			</File>
+			<File
+				RelativePath=".\FormFurnaceView.h"
+				>
+			</File>
+			<File
 				RelativePath=".\FormMonitorView.h"
 				>
 			</File>
 			<File
 				RelativePath=".\FormNavigView.h"
+				>
+			</File>
+			<File
+				RelativePath=".\FormRollView.h"
+				>
+			</File>
+			<File
+				RelativePath=".\FormUserView.h"
 				>
 			</File>
 			<File
