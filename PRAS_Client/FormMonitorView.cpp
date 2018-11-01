@@ -47,3 +47,11 @@ void CFormMonitorView::Dump(CDumpContext& dc) const
 
 
 // CFormMonitorView 消息处理程序
+
+void CFormMonitorView::OnInitialUpdate()
+{
+	CFormView::OnInitialUpdate();
+
+	// TODO: 在此添加专用代码和/或调用基类
+	AfxMessageBox(_T("init"));
+}

@@ -21,6 +21,8 @@ BEGIN_MESSAGE_MAP(CChildFrame, CMDIChildWnd)
 	ON_WM_SIZE()
 	ON_WM_MDIACTIVATE()
 	ON_WM_TIMER()
+	ON_MESSAGE(UM_CLOSE,OnUMClose)
+	ON_MESSAGE(UM_VIEW_CHANGE,OnUMViewChange)
 END_MESSAGE_MAP()
 
 
@@ -73,11 +75,11 @@ void CChildFrame::Dump(CDumpContext& dc) const
 BOOL CChildFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 {
 	//启动计时器
-	SetTimer(COMP_TIMER_ID,1000,NULL);//设置计时器触发间隔1000ms，响应函数为默认响应
+	SetTimer(ID_TIMER_CHILDFRM,1000,NULL);//设置计时器触发间隔1000ms，响应函数为默认响应
 
 	CRect rcClient;
 	GetClientRect(&rcClient);//获取客户区坐标
-	ScreenToClient(rcClient);//转换屏幕坐标到客户区坐标，转换后坐标为相对于父窗口的坐标
+	ScreenToClient(rcClient);//转换屏幕坐标到客户区坐标，转换后客户区左上角坐标为(0,0)
 
 	if (!m_wndSplitter.CreateStatic(this,1,2))//分割窗口，一行两列
 		return FALSE;
@@ -86,7 +88,7 @@ BOOL CChildFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 	if (!m_wndSplitter.CreateView(0,
 									0,
 									RUNTIME_CLASS(CFormNavigView),
-									CSize(rcClient.Width()*0.4,rcClient.Height()),
+									CSize(rcClient.Width()*0.2,rcClient.Height()),
 									pContext))
 	{
 		return FALSE;
@@ -97,7 +99,7 @@ BOOL CChildFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 	if (!m_wndSplitter.CreateView(0,
 									1,
 									RUNTIME_CLASS(CFormMonitorView),
-									CSize(rcClient.Width()*0.6,
+									CSize(rcClient.Width()*0.8,
 									rcClient.Height()),
 									pContext))
 	{
@@ -115,11 +117,73 @@ BOOL CChildFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 void CChildFrame::OnTimer(UINT_PTR nIDEvent)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
-	if (nIDEvent == COMP_TIMER_ID)
+	if (nIDEvent == ID_TIMER_CHILDFRM)
 	{
 		static int sCount = 0;
 		TRACE("第 %d 次执行timer\n", sCount++);//输出到output窗口
 	}
 
 	CMDIChildWnd::OnTimer(nIDEvent);
+}
+
+LRESULT CChildFrame::OnUMClose(WPARAM wParam,LPARAM lParam)
+{
+	int iRet = 0;
+	//可在资源视图String Table中修改标题，ID:AFX_IDS_APP_TITLE
+	iRet = AfxMessageBox(_T("确定退出系统？"),MB_YESNO|MB_ICONQUESTION);
+
+	if (iRet == IDYES)
+	{
+		this->GetTopLevelFrame()->PostMessage(WM_CLOSE);
+	}
+	return 0;
+}
+
+LRESULT CChildFrame::OnUMViewChange(WPARAM wParam,LPARAM lParam)
+{
+	SwitchRightView(wParam);
+	return 0;
+}
+
+BOOL CChildFrame::SwitchRightView(WPARAM wParam)
+{
+	if (!m_wndSplitter.GetPane(0,1))//判断右侧是否存在视图
+	{
+		return FALSE;
+	}
+
+	m_wndSplitter.DeleteView(0,1);//删除右侧视图
+
+	switch (wParam)
+	{
+	case IDView::ID_VIEW_MONITOR:
+		{
+			m_wndSplitter.CreateView(0,
+										1,
+										RUNTIME_CLASS(CFormMonitorView),
+										CSize(0,0),
+										NULL);
+			break;
+		}
+	case IDView::ID_VIEW_ROLL:
+		{
+			break;
+		}
+	case IDView::ID_VIEW_OPERATION:
+		{
+			break;
+		}
+	case IDView::ID_VIEW_USER:
+		{
+			break;
+		}
+	case IDView::ID_VIEW_FURNACE:
+		{
+			break;
+		}
+	default:
+		break;
+	}
+
+	return TRUE;
 }

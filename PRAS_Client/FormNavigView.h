@@ -38,6 +38,13 @@ private:
 	CButton m_btnFurnace;
 	// 系统退出按钮
 	CButton m_btnQuit;
+	virtual void OnInitialUpdate();
+	afx_msg void OnBnClickedButtonQuit();
+	afx_msg void OnBnClickedButtonMonitor();
+	afx_msg void OnBnClickedButtonRoll();
+	afx_msg void OnBnClickedButtonUser();
+	afx_msg void OnBnClickedButtonOperation();
+	afx_msg void OnBnClickedButtonFurnace();
 };
 
 
