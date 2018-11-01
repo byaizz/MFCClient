@@ -2,7 +2,8 @@
 #define PRAS_DEFINITION_H
 
 enum IDTimer{
-	ID_TIMER_CHILDFRM
+	ID_TIMER_CHILDFRM,
+	ID_TIMER_CURRENTTIME
 };
 
 enum UserMessage{

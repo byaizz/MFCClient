@@ -1,4 +1,5 @@
 #pragma once
+#include "afxwin.h"
 
 
 
@@ -39,12 +40,16 @@ private:
 	// 系统退出按钮
 	CButton m_btnQuit;
 	virtual void OnInitialUpdate();
+	void UpdataCurrentTime();
 	afx_msg void OnBnClickedButtonQuit();
 	afx_msg void OnBnClickedButtonMonitor();
 	afx_msg void OnBnClickedButtonRoll();
 	afx_msg void OnBnClickedButtonUser();
 	afx_msg void OnBnClickedButtonOperation();
 	afx_msg void OnBnClickedButtonFurnace();
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	// 用于显示当前时间
+	CStatic m_staticCurrentTime;
 };
 
 

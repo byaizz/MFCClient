@@ -30,6 +30,7 @@ void CFormNavigView::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_BUTTON_OPERATION, m_btnOperation);
 	DDX_Control(pDX, IDC_BUTTON_FURNACE, m_btnFurnace);
 	DDX_Control(pDX, IDC_BUTTON_QUIT, m_btnQuit);
+	DDX_Control(pDX, IDC_STATIC_TIME, m_staticCurrentTime);
 }
 
 BEGIN_MESSAGE_MAP(CFormNavigView, CFormView)
@@ -39,6 +40,7 @@ BEGIN_MESSAGE_MAP(CFormNavigView, CFormView)
 	ON_BN_CLICKED(IDC_BUTTON_USER, &CFormNavigView::OnBnClickedButtonUser)
 	ON_BN_CLICKED(IDC_BUTTON_OPERATION, &CFormNavigView::OnBnClickedButtonOperation)
 	ON_BN_CLICKED(IDC_BUTTON_FURNACE, &CFormNavigView::OnBnClickedButtonFurnace)
+	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 
@@ -78,6 +80,20 @@ void CFormNavigView::OnInitialUpdate()
 	m_btnOperation.MoveWindow(30,240,124,36);
 	m_btnFurnace.MoveWindow(30,290,124,36);
 	m_btnQuit.MoveWindow(30,340,124,36);
+
+	SetTimer(ID_TIMER_CURRENTTIME,100,NULL);
+}
+
+void CFormNavigView::UpdataCurrentTime()
+{
+	if (m_staticCurrentTime.m_hWnd == NULL)
+	{
+		return;
+	}
+	CString sTime;
+	CTime time = CTime::GetCurrentTime();
+	sTime = time.Format("%A\n%H:%M:%S\t%Y/%m/%d");
+	m_staticCurrentTime.SetWindowText(sTime);
 }
 
 void CFormNavigView::OnBnClickedButtonQuit()
@@ -114,4 +130,12 @@ void CFormNavigView::OnBnClickedButtonFurnace()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	this->GetParentFrame()->SendMessage(UM_VIEW_CHANGE,ID_VIEW_FURNACE);
+}
+
+void CFormNavigView::OnTimer(UINT_PTR nIDEvent)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	UpdataCurrentTime();
+
+	CFormView::OnTimer(nIDEvent);
 }
