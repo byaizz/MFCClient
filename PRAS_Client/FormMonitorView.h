@@ -28,7 +28,8 @@ protected:
 public:
 	virtual void OnInitialUpdate();
 private:
-	CGridCtrl m_GridSlabInfo;//精轧表格
+	// 精轧表格
+	CGridCtrl m_GridSlabInfo;
 };
 
 
