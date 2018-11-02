@@ -1,6 +1,6 @@
 #pragma once
 
-
+#include "GridCtrl.h"
 
 // CFormMonitorView 窗体视图
 
@@ -27,6 +27,8 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	virtual void OnInitialUpdate();
+private:
+	CGridCtrl m_GridSlabInfo;//精轧表格
 };
 
 

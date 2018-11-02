@@ -44,6 +44,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				AdditionalIncludeDirectories="../GridCtrlSource;../GridCtrlHead"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -343,6 +344,106 @@
 			</File>
 			<File
 				RelativePath=".\res\Toolbar.bmp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="GridCtrlSource"
+			>
+			<File
+				RelativePath="..\GridCtrlSource\Graph.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlSource\GraphLegend.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlSource\GraphSeries.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlSource\GridCtrl.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlSource\GridDropTarget.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlSource\InplaceEdit.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlSource\InplaceList.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlSource\PrintRx.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlSource\TitleTip.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlSource\ViewPrintPreview.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="GridCtrlHead"
+			>
+			<File
+				RelativePath="..\GridCtrlHead\CellRange.h"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlHead\Graph.h"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlHead\GraphLegend.h"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlHead\GraphSeries.h"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlHead\GridCtrl.h"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlHead\GridDropTarget.h"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlHead\InplaceEdit.h"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlHead\InplaceList.h"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlHead\MemDc.h"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlHead\PrintRx.h"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlHead\resource.h"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlHead\TitleTip.h"
+				>
+			</File>
+			<File
+				RelativePath="..\GridCtrlHead\ViewPrintPreview.h"
 				>
 			</File>
 		</Filter>
