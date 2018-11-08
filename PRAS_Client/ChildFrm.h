@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include "PRASGuiSerComm.h"
 
 class CChildFrame : public CMDIChildWnd
 {
@@ -40,4 +41,6 @@ private:
 	afx_msg LRESULT OnUMClose(WPARAM wParam,LPARAM lParam);//客户端退出
 	afx_msg LRESULT OnUMViewChange(WPARAM wParam,LPARAM lParam);//view切换
 	BOOL SwitchRightView(WPARAM wParam);//页面切换
+
+	CPRASGuiSerComm m_GuiSerComm;
 };

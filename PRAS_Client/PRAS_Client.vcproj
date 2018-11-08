@@ -20,7 +20,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
-			UseOfMFC="2"
+			UseOfMFC="1"
 			CharacterSet="1"
 			>
 			<Tool
@@ -44,11 +44,11 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../GridCtrlSource;../GridCtrlHead"
+				AdditionalIncludeDirectories="../GridCtrlSource;../GridCtrlHead;D:\RollWare\RwKernel\SDK\Include;D:\RollWare\RwPlatform\Include"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
+				RuntimeLibrary="1"
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
@@ -68,7 +68,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="RWPlatform_d.lib RWKernel_d.lib pthreadvc2.lib netapi32.lib wsock32.lib des.lib"
 				LinkIncremental="2"
+				AdditionalLibraryDirectories="D:\RollWare\ExternLib;..\lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -444,6 +446,18 @@
 			</File>
 			<File
 				RelativePath="..\GridCtrlHead\ViewPrintPreview.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Comm"
+			>
+			<File
+				RelativePath=".\PRASGuiSerComm.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PRASGuiSerComm.h"
 				>
 			</File>
 		</Filter>

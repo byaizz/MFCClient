@@ -9,6 +9,8 @@
 #include "PRAS_ClientDoc.h"
 #include "PRAS_ClientView.h"
 
+#include "NG_Sock.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -32,8 +34,14 @@ CPRAS_ClientApp::CPRAS_ClientApp()
 {
 	// TODO: 在此处添加构造代码，
 	// 将所有重要的初始化放置在 InitInstance 中
+	NGSock_SysInit();
 }
 
+
+CPRAS_ClientApp::~CPRAS_ClientApp()
+{
+	NGSock_SysClose();
+}
 
 // 唯一的一个 CPRAS_ClientApp 对象
 

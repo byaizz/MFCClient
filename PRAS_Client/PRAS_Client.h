@@ -17,6 +17,7 @@ class CPRAS_ClientApp : public CWinApp
 {
 public:
 	CPRAS_ClientApp();
+	~CPRAS_ClientApp();
 
 
 // ÖØÐ´

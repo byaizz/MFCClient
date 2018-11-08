@@ -45,7 +45,7 @@ void CChildFrame::OnSize(UINT nType, int cx, int cy)
 
 void CChildFrame::OnMDIActivate(BOOL bActivate, CWnd* pActivateWnd, CWnd* pDeactivateWnd)
 {
-	AfxGetMainWnd()->SetMenu(NULL);//屏蔽菜单
+//	AfxGetMainWnd()->SetMenu(NULL);//屏蔽菜单
 }
 
 CChildFrame::~CChildFrame()
@@ -120,11 +120,14 @@ BOOL CChildFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 void CChildFrame::OnTimer(UINT_PTR nIDEvent)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
-// 	if (nIDEvent == ID_TIMER_CHILDFRM)
-// 	{
-// 		static int sCount = 0;
-// 		TRACE("第 %d 次执行timer\n", sCount++);//输出到output窗口
-// 	}
+	if (!m_GuiSerComm.IsCommInit())
+	{
+		if (!m_GuiSerComm.InitComm())
+		{
+			MessageBox(_T("通信初始化失败"));
+			this->GetTopLevelFrame()->PostMessage(WM_CLOSE);
+		}
+	}
 
 	CMDIChildWnd::OnTimer(nIDEvent);
 }
