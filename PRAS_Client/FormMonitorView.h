@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GridCtrl.h"
+#include "afxwin.h"
 
 // CFormMonitorView 窗体视图
 
@@ -30,6 +31,9 @@ public:
 private:
 	// 精轧表格
 	CGridCtrl m_GridSlabInfo;
+	afx_msg void OnTcnSelchangeTab1(NMHDR *pNMHDR, LRESULT *pResult);
+	afx_msg void OnBnClickedButton1();
+	CButton m_buttonControl;
 };
 
 

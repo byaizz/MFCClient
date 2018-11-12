@@ -44,7 +44,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../GridCtrlSource;../GridCtrlHead;D:\RollWare\RwKernel\SDK\Include;D:\RollWare\RwPlatform\Include"
+				AdditionalIncludeDirectories="../GridCtrlSource;../GridCtrlHead;D:\RollWare\RwKernel\SDK\Include;D:\RollWare\RwPlatform\Include;.\Excel_Header"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -458,6 +458,42 @@
 			</File>
 			<File
 				RelativePath=".\PRASGuiSerComm.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="MyExcel"
+			>
+			<File
+				RelativePath=".\Excel_Header\CApplication.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Excel_Header\CRange.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Excel_Header\CWorkbook.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Excel_Header\CWorkbooks.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Excel_Header\CWorksheet.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Excel_Header\CWorksheets.h"
+				>
+			</File>
+			<File
+				RelativePath=".\MyExcel.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\MyExcel.h"
 				>
 			</File>
 		</Filter>

@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "PRAS_Client.h"
 #include "FormMonitorView.h"
+#include "MyExcel.h"
 
 
 // CFormMonitorView
@@ -24,9 +25,11 @@ void CFormMonitorView::DoDataExchange(CDataExchange* pDX)
 {
 	CFormView::DoDataExchange(pDX);
 	DDX_GridControl(pDX, IDC_CUSTOM_GRID_SLAB, m_GridSlabInfo);
+	DDX_Control(pDX, IDC_BUTTON1, m_buttonControl);
 }
 
 BEGIN_MESSAGE_MAP(CFormMonitorView, CFormView)
+	ON_BN_CLICKED(IDC_BUTTON1, &CFormMonitorView::OnBnClickedButton1)
 END_MESSAGE_MAP()
 
 
@@ -96,4 +99,13 @@ void CFormMonitorView::OnInitialUpdate()
 	int height = m_GridSlabInfo.GetRowCount()*m_GridSlabInfo.GetRowHeight(0);
 	m_GridSlabInfo.MoveWindow(100,100,width,height);
 
+}
+
+void CFormMonitorView::OnBnClickedButton1()
+{
+	m_buttonControl.EnableWindow(FALSE);
+	// TODO: 在此添加控件通知处理程序代码
+	MyExcel excel;
+	excel.ExcelOperation();
+	m_buttonControl.EnableWindow(TRUE);
 }
