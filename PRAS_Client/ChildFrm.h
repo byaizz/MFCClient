@@ -43,4 +43,5 @@ private:
 	BOOL SwitchRightView(WPARAM wParam);//“≥√Ê«–ªª
 
 	CPRASGuiSerComm m_SerComm;
+	bool m_bInit;
 };

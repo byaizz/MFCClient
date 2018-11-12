@@ -33,6 +33,7 @@ END_MESSAGE_MAP()
 // CChildFrame 构造/析构
 
 CChildFrame::CChildFrame()
+:m_bInit(false)
 {
 	// TODO: 在此添加成员初始化代码
 }
@@ -120,24 +121,26 @@ BOOL CChildFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 void CChildFrame::OnTimer(UINT_PTR nIDEvent)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
-	if (!m_SerComm.IsCommInit())
-	{
-		if (!m_SerComm.InitComm())
-		{
-			MessageBox(_T("通信初始化失败"));
-			this->GetTopLevelFrame()->PostMessage(WM_CLOSE);
-		}
-	}
-	static int count = 0;
-	if (count > 55)
-	{
-		count = 0;
-	}
-	static char text[56] = {0};
-	text[count] = 'a';
-	count += 2;
-
-	m_SerComm.SendData(text,sizeof(text));
+// 	if (!m_SerComm.IsCommInit() && !m_bInit)
+// 	{
+// 		m_bInit = true;//此处需要线程锁，但是原项目用bool标记位来代替
+// 		if (!m_SerComm.InitComm())
+// 		{
+// 			MessageBox(_T("通信初始化失败"));
+// 			this->GetTopLevelFrame()->PostMessage(WM_CLOSE);
+// 		}
+// 		m_bInit = false;
+// 	}
+// 	static int count = 0;
+// 	if (count > 55)
+// 	{
+// 		count = 0;
+// 	}
+// 	static char text[56] = {0};
+// 	text[count] = 'a';
+// 	count += 2;
+// 
+// 	m_SerComm.SendData(text,sizeof(text));
 
 	CMDIChildWnd::OnTimer(nIDEvent);
 }

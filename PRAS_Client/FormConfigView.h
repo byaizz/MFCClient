@@ -1,4 +1,5 @@
 #pragma once
+#include "afxwin.h"
 
 
 
@@ -25,6 +26,13 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
 
 	DECLARE_MESSAGE_MAP()
+public:
+	// 下拉框
+	CComboBox m_ComboBoxCtrl;
+public:
+	virtual void OnInitialUpdate();
+public:
+	afx_msg void OnCbnSelendokCombo1();
 };
 
 

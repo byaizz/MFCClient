@@ -4,3 +4,5 @@
 /debug
 Debug
 /PRAS_Client/*.aps
+MPCom.log
+MPTcpClient.log
