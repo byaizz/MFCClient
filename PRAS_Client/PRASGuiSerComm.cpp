@@ -38,15 +38,9 @@ bool CPRASGuiSerComm::InitComm()
 	strcat(path,GUI_SERVICE_COMM_CFG);
 
 	//创建通信连接
-	m_hComm = MP_Comm_Create(path);
+	m_hComm = MP_Comm_Open(path);
 	if (m_hComm == NULL)
 	{
-		std::fstream fs;
-		fs.open(path);
-		if (fs)
-		{
-			fs.close();
-		}
 		return false;
 	}
 	
@@ -127,22 +121,23 @@ int CPRASGuiSerComm::SendData(void *pData, int iSize)
 {
 	if(pData == NULL)
 	{
-		return 1;
+		return ERR_FAILED;
 	}
 	if (iSize <= 0)
 	{
-		return 1;
+		return ERR_FAILED;
 	}
 	if (!IsCommInit())
 	{
-		return 1;
+		return ERR_FAILED;
 	}
-	int res = 0;
+	int res = ERR_SUCCESS;
 	for (int i = 0; i < m_iCount; ++i)
 	{
-		if (1 == MP_Comm_SendNoBlock(m_hComm,i,pData,iSize))
+		int ret = MP_Comm_SendNoBlock(m_hComm,i,pData,iSize);
+		if (ERR_SUCCESS != ret)
 		{
-			res = 1;
+			res = ERR_FAILED;
 		}
 	}
 	return res;

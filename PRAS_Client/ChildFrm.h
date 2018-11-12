@@ -42,5 +42,5 @@ private:
 	afx_msg LRESULT OnUMViewChange(WPARAM wParam,LPARAM lParam);//view«–ªª
 	BOOL SwitchRightView(WPARAM wParam);//“≥√Ê«–ªª
 
-	CPRASGuiSerComm m_GuiSerComm;
+	CPRASGuiSerComm m_SerComm;
 };
