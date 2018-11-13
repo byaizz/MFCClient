@@ -30,6 +30,10 @@ public:
 private:
 	// ¾«Ôþ±í¸ñ
 	CGridCtrl m_GridSlabInfo;
+protected:
+	virtual BOOL OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult);
+public:
+	afx_msg void OnExcelExcel2();
 };
 
 

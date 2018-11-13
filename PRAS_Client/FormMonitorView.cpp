@@ -5,6 +5,8 @@
 #include "PRAS_Client.h"
 #include "FormMonitorView.h"
 
+#include "Test.h"
+
 
 // CFormMonitorView
 
@@ -27,6 +29,7 @@ void CFormMonitorView::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(CFormMonitorView, CFormView)
+	ON_COMMAND(ID_EXCEL_EXCEL2, &CFormMonitorView::OnExcelExcel2)
 END_MESSAGE_MAP()
 
 
@@ -96,4 +99,41 @@ void CFormMonitorView::OnInitialUpdate()
 	int height = m_GridSlabInfo.GetRowCount()*m_GridSlabInfo.GetRowHeight(0);
 	m_GridSlabInfo.MoveWindow(100,100,width,height);
 
+}
+
+BOOL CFormMonitorView::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
+{
+	// TODO: 在此添加专用代码和/或调用基类
+	NM_GRIDVIEW		*pGridInfo;		//表格信息
+	if (IDC_CUSTOM_GRID_SLAB == wParam)
+	{
+		pGridInfo = (NM_GRIDVIEW *)lParam;
+		if (NM_DBLCLK == pGridInfo->hdr.code
+			|| WM_RBUTTONDOWN == pGridInfo->hdr.code)
+		{
+			//MessageBox(_T("有人点我"));
+			CPoint	point;
+			CMenu	MenuRight;	//右键菜单
+			CMenu	*pMenuPop;	//弹出菜单
+			if (MenuRight.LoadMenu(IDR_MENU_GRID_CTRL))
+			{
+ 				pMenuPop = MenuRight.GetSubMenu(0);
+ 				//int iCount = pMenuPop->GetMenuItemCount();
+ 				//pMenuPop->EnableMenuItem(IDR_MENU_GRID_CTRL,MF_BYCOMMAND|MF_ENABLED);
+ 				GetCursorPos(&point);
+ 				pMenuPop->TrackPopupMenu(TPM_LEFTALIGN/*|TPM_RIGHTBUTTON*/,point.x,point.y,this);
+			}
+		}
+	}
+	
+
+
+	return CFormView::OnNotify(wParam, lParam, pResult);
+}
+
+void CFormMonitorView::OnExcelExcel2()
+{
+	// TODO: 在此添加命令处理程序代码
+	CTest test;
+	test.DoModal();
 }

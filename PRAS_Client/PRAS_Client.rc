@@ -170,6 +170,22 @@ BEGIN
     END
 END
 
+IDR_MENU_GRID_CTRL MENU 
+BEGIN
+    POPUP "新建"
+    BEGIN
+        MENUITEM "pdf",                         ID_32771
+        MENUITEM "doc",                         ID_32772
+        POPUP "excel"
+        BEGIN
+            MENUITEM "excel1",                      ID_EXCEL_EXCEL1
+            MENUITEM "excel2",                      ID_EXCEL_EXCEL2
+        END
+    END
+    MENUITEM "另存",                          0
+    MENUITEM "保存",                          0
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -262,6 +278,16 @@ STYLE DS_SETFONT | WS_CHILD
 FONT 9, "宋体, MS Sans Serif", 0, 0, 0x0
 BEGIN
     LTEXT           "furnace view",IDC_STATIC,24,42,280,8
+END
+
+IDD_DIALOG_TEST DIALOGEX 0, 0, 186, 92
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,129,7,50,14
+    PUSHBUTTON      "取消",IDCANCEL,129,24,50,14
+    PUSHBUTTON      "测试专用",IDC_BUTTON1,55,38,50,14
 END
 
 
@@ -366,6 +392,14 @@ BEGIN
         RIGHTMARGIN, 313
         TOPMARGIN, 7
         BOTTOMMARGIN, 193
+    END
+
+    IDD_DIALOG_TEST, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 85
     END
 END
 #endif    // APSTUDIO_INVOKED
