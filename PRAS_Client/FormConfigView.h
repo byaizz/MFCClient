@@ -33,6 +33,9 @@ public:
 	virtual void OnInitialUpdate();
 public:
 	afx_msg void OnCbnSelendokCombo1();
+private:
+	CToolTipCtrl m_toolTips;
+	virtual BOOL PreTranslateMessage(MSG* pMsg);
 };
 
 

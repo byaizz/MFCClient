@@ -15,7 +15,8 @@ IMPLEMENT_DYNCREATE(CFormMonitorView, CFormView)
 CFormMonitorView::CFormMonitorView()
 	: CFormView(CFormMonitorView::IDD)
 {
-
+	idLastCell.row = -1;
+	idLastCell.col = -1;
 }
 
 CFormMonitorView::~CFormMonitorView()
@@ -83,7 +84,7 @@ void CFormMonitorView::OnInitialUpdate()
 		GV_ITEM item;
 		item.mask = GVIF_TEXT | GVIF_FORMAT;
 		item.row = i;
-		item.nFormat = DT_LEFT | DT_SINGLELINE | DT_END_ELLIPSIS;
+		item.nFormat = DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_END_ELLIPSIS;
 		for (int j = 0; j < colCount; ++j)
 		{
 			item.col = j;
@@ -98,6 +99,16 @@ void CFormMonitorView::OnInitialUpdate()
 	int width = m_GridSlabInfo.GetColumnCount()*m_GridSlabInfo.GetColumnWidth(0);
 	int height = m_GridSlabInfo.GetRowCount()*m_GridSlabInfo.GetRowHeight(0);
 	m_GridSlabInfo.MoveWindow(100,100,width,height);
+
+	//创建toolTips
+	EnableToolTips(TRUE);//enable
+	m_toolTips.Create(this);
+	m_toolTips.Activate(TRUE);
+	m_toolTips.SetTipTextColor(RGB(0,255,0));//font color
+	m_toolTips.SetDelayTime(100);//delay time
+	m_toolTips.SetDelayTime(TTDT_AUTOPOP,20000);//set duration
+	//参数一为你想添加提示的控件IDC(可添加多个)，参数二为想添加的提示语句
+	m_toolTips.AddTool(GetDlgItem(IDC_CUSTOM_GRID_SLAB),_T("提示信息"));
 
 }
 
@@ -126,8 +137,6 @@ BOOL CFormMonitorView::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
 		}
 	}
 	
-
-
 	return CFormView::OnNotify(wParam, lParam, pResult);
 }
 
@@ -136,4 +145,41 @@ void CFormMonitorView::OnExcelExcel2()
 	// TODO: 在此添加命令处理程序代码
 	CTest test;
 	test.DoModal();
+}
+
+BOOL CFormMonitorView::PreTranslateMessage(MSG* pMsg)
+{
+	// TODO: 在此添加专用代码和/或调用基类
+	if (pMsg->message == WM_MOUSEMOVE)
+	{
+		m_toolTips.RelayEvent(pMsg);
+
+		CCellID idCurrentCell;
+		idCurrentCell.row = -1;
+		idCurrentCell.col = -1;
+		m_GridSlabInfo.GetCellPoint(idCurrentCell);
+		//当鼠标移动到另一个单元格时
+		if (idLastCell.row != idCurrentCell.row
+			|| idLastCell.col != idCurrentCell.col)
+		{
+			idLastCell.row = idCurrentCell.row;
+			idLastCell.col = idCurrentCell.col;
+			if (idCurrentCell.row >= 0 && idCurrentCell.col >= 0
+				&&idCurrentCell.row < m_GridSlabInfo.GetRowCount()
+				&&idCurrentCell.col < m_GridSlabInfo.GetColumnCount())
+			{
+				//设置tips内容
+				CString str;
+				str.Format(_T("%d 行,%d 列"),idCurrentCell.row,idCurrentCell.col);
+				m_toolTips.Activate(TRUE);
+				m_toolTips.UpdateTipText(str,GetDlgItem(IDC_CUSTOM_GRID_SLAB));
+			}
+			else
+			{
+				m_toolTips.Activate(FALSE);//表格之外不显示tips
+			}
+		}
+	}
+
+	return CFormView::PreTranslateMessage(pMsg);
 }

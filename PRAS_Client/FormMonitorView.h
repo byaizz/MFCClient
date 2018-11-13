@@ -30,10 +30,15 @@ public:
 private:
 	// 精轧表格
 	CGridCtrl m_GridSlabInfo;
+	//保存上一个单元格位置
+	CCellID idLastCell;
 protected:
 	virtual BOOL OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult);
 public:
 	afx_msg void OnExcelExcel2();
+	CToolTipCtrl m_toolTips;
+public:
+	virtual BOOL PreTranslateMessage(MSG* pMsg);
 };
 
 
