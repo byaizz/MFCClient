@@ -14,13 +14,18 @@ public:
 	MyExcel(void);
 public:
 	~MyExcel(void);
-	void ExcelOperation();
+	bool Open(const CString &iFileName);
+	void Close();
+	bool Init();
+	bool SaveAsPDF(const CString &iFileName);
 private:
 	CApplication	app;
 	CWorkbooks		workbooks;
 	CWorkbook		workbook;
 	CWorksheets		worksheets;
 	CWorksheet		worksheet;
-	CRange			range;
 
+	COleVariant		covTrue;
+	COleVariant		covFalse;
+	COleVariant		covOptional;
 };

@@ -106,6 +106,14 @@ void CFormMonitorView::OnBnClickedButton1()
 	m_buttonControl.EnableWindow(FALSE);
 	// TODO: 在此添加控件通知处理程序代码
 	MyExcel excel;
-	excel.ExcelOperation();
+	if (!excel.Init())
+	{
+		return;
+	}
+	if (excel.Open(_T("E:\\test_by.xlsx")))
+	{
+		excel.SaveAsPDF(_T("E:\\test_by.pdf"));
+	}
+	excel.Close();
 	m_buttonControl.EnableWindow(TRUE);
 }
