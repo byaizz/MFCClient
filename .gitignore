@@ -5,3 +5,4 @@
 Debug
 /PRAS_Client/*.aps
 /PRAS_Client/*.log
+/enc_temp_folder/*.tmp

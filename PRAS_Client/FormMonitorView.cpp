@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "PRAS_Client.h"
 #include "FormMonitorView.h"
-#include "MyExcel.h"
+#include "ExcelManager.h"
 
 
 // CFormMonitorView
@@ -105,9 +105,10 @@ void CFormMonitorView::OnBnClickedButton1()
 {
 	m_buttonControl.EnableWindow(FALSE);
 	// TODO: 在此添加控件通知处理程序代码
-	MyExcel excel;
+	ExcelManager excel;
 	if (!excel.Init())
 	{
+		MessageBox(_T("初始化excel失败"));
 		return;
 	}
 	if (excel.Open(_T("E:\\test_by.xlsx")))
@@ -115,5 +116,9 @@ void CFormMonitorView::OnBnClickedButton1()
 		excel.SaveAsPDF(_T("E:\\test_by.pdf"));
 	}
 	excel.Close();
+// 	if (excel.Open(_T("E:\\test.xlsx")))
+// 	{
+// 		excel.Test();
+// 	}
 	m_buttonControl.EnableWindow(TRUE);
 }
