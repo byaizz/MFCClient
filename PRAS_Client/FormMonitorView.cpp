@@ -114,7 +114,7 @@ void CFormMonitorView::OnBnClickedButton1()
 	if (excel.Open(_T("E:\\test_by.xlsx")))
 	{
 		excel.Test1();
-		//excel.SaveAsPDF(_T("E:\\test_by.pdf"));
+		excel.SaveAsPDF(_T("E:\\test_by.pdf"));
 	}
 	excel.Close();
 // 	if (excel.Open(_T("E:\\test.xlsx")))

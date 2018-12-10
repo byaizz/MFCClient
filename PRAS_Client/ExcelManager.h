@@ -109,8 +109,8 @@ public:
 	//************************************************************************
 	// Method:		SetCellValue	写入单个单元格数据
 	// Returns:		bool
-	// Parameter:	COleVariant rowIndex		单元格行号,例如:"8"
-	// Parameter:	COleVariant columnIndex		单元格列号,例如:"C"
+	// Parameter:	COleVariant rowIndex		单元格行号,例如:"8"或数字表示
+	// Parameter:	COleVariant columnIndex		单元格列号,例如:"C"或数字表示
 	// Parameter:	COleVariant data			要写入的数据
 	// Author:		byshi
 	// Date:		2018-12-7	
