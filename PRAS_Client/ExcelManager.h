@@ -23,6 +23,42 @@ public:
 	void Close();
 	
 	//************************************************************************
+	// Method:		CreateTwoDimSafeArray	创建二维安全数组
+	// Returns:		bool
+	// Parameter:	COleSafeArray & safeArray	数组名
+	// Parameter:	DWORD dimElements1	一维的元素数量
+	// Parameter:	DWORD dimElements2	二维的元素数量
+	// Parameter:	long iLBound1	一维的下边界，默认值:1
+	// Parameter:	long iLBound2	二维的下边界，默认值:1
+	// Author:		byshi
+	// Date:		2018-12-10	
+	//************************************************************************
+	bool CreateTwoDimSafeArray(COleSafeArray &safeArray, DWORD dimElements1, 
+		DWORD dimElements2, long iLBound1 = 1, long iLBound2 = 1);
+	
+	//************************************************************************
+	// Method:		GetCellsValue	获取批量单元格数据
+	// Returns:		bool
+	// Parameter:	COleVariant startCell	起始单元格
+	// Parameter:	COleVariant endCell		结束单元格
+	// Parameter:	VARIANT & iData		返回获取到的数据值
+	// Author:		byshi
+	// Date:		2018-12-10	
+	//************************************************************************
+	bool GetCellsValue(COleVariant startCell,COleVariant endCell,
+		VARIANT &iData);
+	//************************************************************************
+	// Method:		GetCellValue	获取单元格数据
+	// Returns:		bool
+	// Parameter:	COleVariant rowIndex		单元格行号,("2",或数字2)
+	// Parameter:	COleVariant columnIndex		单元格列号,("C",或数字3)
+	// Parameter:	VARIANT & data		返回获取到的数据值
+	// Author:		byshi
+	// Date:		2018-12-10	
+	//************************************************************************
+	bool GetCellValue(COleVariant rowIndex, COleVariant columnIndex,VARIANT &data);
+	
+	//************************************************************************
 	// Method:		Init
 	// Returns:		bool
 	// Author:		byshi
@@ -126,8 +162,8 @@ public:
 	//************************************************************************
 	bool SwitchWorksheet(const CString &sheetName);
 
-	void Test();
 	void Test1();
+
 public://not use
 	//此处暂时不用，若需要的功能该类未封装，可使用以下函数获取book、sheet自定义操作
 
