@@ -1,5 +1,6 @@
 // 从类型库向导中用“添加类”创建的计算机生成的 IDispatch 包装器类
 
+//#import "C:\\Program Files\\Microsoft Office\\Office15\\EXCEL.EXE" no_namespace
 // CRange 包装器类
 
 class CRange : public COleDispatchDriver
@@ -133,7 +134,7 @@ public:
 		InvokeHelper(0x40c, DISPATCH_METHOD, VT_VARIANT, (void*)&result, NULL);
 		return result;
 	}
-	VARIANT BorderAround(VARIANT& LineStyle, long Weight, long ColorIndex, VARIANT& Color)
+	VARIANT _BorderAround(VARIANT& LineStyle, long Weight, long ColorIndex, VARIANT& Color)
 	{
 		VARIANT result;
 		static BYTE parms[] = VTS_VARIANT VTS_I4 VTS_I4 VTS_VARIANT;
@@ -1299,6 +1300,41 @@ public:
 		VARIANT result;
 		InvokeHelper(0x93c, DISPATCH_METHOD, VT_VARIANT, (void*)&result, NULL);
 		return result;
+	}
+	LPDISPATCH get_SparklineGroups()
+	{
+		LPDISPATCH result;
+		InvokeHelper(0xb25, DISPATCH_PROPERTYGET, VT_DISPATCH, (void*)&result, NULL);
+		return result;
+	}
+	void ClearHyperlinks()
+	{
+		InvokeHelper(0xb26, DISPATCH_METHOD, VT_EMPTY, NULL, NULL);
+	}
+	LPDISPATCH get_DisplayFormat()
+	{
+		LPDISPATCH result;
+		InvokeHelper(0x29a, DISPATCH_PROPERTYGET, VT_DISPATCH, (void*)&result, NULL);
+		return result;
+	}
+	VARIANT BorderAround(VARIANT& LineStyle, long Weight, long ColorIndex, VARIANT& Color, VARIANT& ThemeColor)
+	{
+		VARIANT result;
+		static BYTE parms[] = VTS_VARIANT VTS_I4 VTS_I4 VTS_VARIANT VTS_VARIANT;
+		InvokeHelper(0xad3, DISPATCH_METHOD, VT_VARIANT, (void*)&result, parms, &LineStyle, Weight, ColorIndex, &Color, &ThemeColor);
+		return result;
+	}
+	void AllocateChanges()
+	{
+		InvokeHelper(0xb27, DISPATCH_METHOD, VT_EMPTY, NULL, NULL);
+	}
+	void DiscardChanges()
+	{
+		InvokeHelper(0xb28, DISPATCH_METHOD, VT_EMPTY, NULL, NULL);
+	}
+	void FlashFill()
+	{
+		InvokeHelper(0xbb4, DISPATCH_METHOD, VT_EMPTY, NULL, NULL);
 	}
 
 	// Range 属性

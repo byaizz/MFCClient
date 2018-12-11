@@ -1,5 +1,6 @@
 // 从类型库向导中用“添加类”创建的计算机生成的 IDispatch 包装器类
 
+//#import "C:\\Program Files\\Microsoft Office\\Office15\\EXCEL.EXE" no_namespace
 // CWorkbook 包装器类
 
 class CWorkbook : public COleDispatchDriver
@@ -1368,6 +1369,100 @@ public:
 	{
 		static BYTE parms[] = VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT;
 		InvokeHelper(0x9ef, DISPATCH_METHOD, VT_EMPTY, NULL, parms, &Filename, &Password, &WriteResPassword, &ReadOnlyRecommended, &CreateBackup, &SharingPassword, &FileFormat);
+	}
+	LPDISPATCH get_SlicerCaches()
+	{
+		LPDISPATCH result;
+		InvokeHelper(0xb32, DISPATCH_PROPERTYGET, VT_DISPATCH, (void*)&result, NULL);
+		return result;
+	}
+	LPDISPATCH get_ActiveSlicer()
+	{
+		LPDISPATCH result;
+		InvokeHelper(0xb33, DISPATCH_PROPERTYGET, VT_DISPATCH, (void*)&result, NULL);
+		return result;
+	}
+	VARIANT get_DefaultSlicerStyle()
+	{
+		VARIANT result;
+		InvokeHelper(0xb34, DISPATCH_PROPERTYGET, VT_VARIANT, (void*)&result, NULL);
+		return result;
+	}
+	void put_DefaultSlicerStyle(VARIANT& newValue)
+	{
+		static BYTE parms[] = VTS_VARIANT;
+		InvokeHelper(0xb34, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, parms, &newValue);
+	}
+	void Dummy26()
+	{
+		InvokeHelper(0xb35, DISPATCH_METHOD, VT_EMPTY, NULL, NULL);
+	}
+	void Dummy27()
+	{
+		InvokeHelper(0xb36, DISPATCH_METHOD, VT_EMPTY, NULL, NULL);
+	}
+	long get_AccuracyVersion()
+	{
+		long result;
+		InvokeHelper(0xb37, DISPATCH_PROPERTYGET, VT_I4, (void*)&result, NULL);
+		return result;
+	}
+	void put_AccuracyVersion(long newValue)
+	{
+		static BYTE parms[] = VTS_I4;
+		InvokeHelper(0xb37, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, parms, newValue);
+	}
+	BOOL get_CaseSensitive()
+	{
+		BOOL result;
+		InvokeHelper(0xbf0, DISPATCH_PROPERTYGET, VT_BOOL, (void*)&result, NULL);
+		return result;
+	}
+	BOOL get_UseWholeCellCriteria()
+	{
+		BOOL result;
+		InvokeHelper(0xbf1, DISPATCH_PROPERTYGET, VT_BOOL, (void*)&result, NULL);
+		return result;
+	}
+	BOOL get_UseWildcards()
+	{
+		BOOL result;
+		InvokeHelper(0xbf2, DISPATCH_PROPERTYGET, VT_BOOL, (void*)&result, NULL);
+		return result;
+	}
+	LPDISPATCH get_PivotTables()
+	{
+		LPDISPATCH result;
+		InvokeHelper(0x2b2, DISPATCH_PROPERTYGET, VT_DISPATCH, (void*)&result, NULL);
+		return result;
+	}
+	LPDISPATCH get_Model()
+	{
+		LPDISPATCH result;
+		InvokeHelper(0xbf3, DISPATCH_PROPERTYGET, VT_DISPATCH, (void*)&result, NULL);
+		return result;
+	}
+	BOOL get_ChartDataPointTrack()
+	{
+		BOOL result;
+		InvokeHelper(0xbb6, DISPATCH_PROPERTYGET, VT_BOOL, (void*)&result, NULL);
+		return result;
+	}
+	void put_ChartDataPointTrack(BOOL newValue)
+	{
+		static BYTE parms[] = VTS_BOOL;
+		InvokeHelper(0xbb6, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, parms, newValue);
+	}
+	VARIANT get_DefaultTimelineStyle()
+	{
+		VARIANT result;
+		InvokeHelper(0xbf4, DISPATCH_PROPERTYGET, VT_VARIANT, (void*)&result, NULL);
+		return result;
+	}
+	void put_DefaultTimelineStyle(VARIANT& newValue)
+	{
+		static BYTE parms[] = VTS_VARIANT;
+		InvokeHelper(0xbf4, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, parms, &newValue);
 	}
 
 	// _Workbook 属性

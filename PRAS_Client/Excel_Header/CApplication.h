@@ -1,5 +1,6 @@
 // 从类型库向导中用“添加类”创建的计算机生成的 IDispatch 包装器类
 
+//#import "C:\\Program Files\\Microsoft Office\\Office15\\EXCEL.EXE" no_namespace
 // CApplication 包装器类
 
 class CApplication : public COleDispatchDriver
@@ -1015,7 +1016,7 @@ public:
 		InvokeHelper(0x16e, DISPATCH_PROPERTYGET, VT_BSTR, (void*)&result, NULL);
 		return result;
 	}
-	void MacroOptions(VARIANT& Macro, VARIANT& Description, VARIANT& HasMenu, VARIANT& MenuText, VARIANT& HasShortcutKey, VARIANT& ShortcutKey, VARIANT& Category, VARIANT& StatusBar, VARIANT& HelpContextID, VARIANT& HelpFile)
+	void _MacroOptions(VARIANT& Macro, VARIANT& Description, VARIANT& HasMenu, VARIANT& MenuText, VARIANT& HasShortcutKey, VARIANT& ShortcutKey, VARIANT& Category, VARIANT& StatusBar, VARIANT& HelpContextID, VARIANT& HelpFile)
 	{
 		static BYTE parms[] = VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT;
 		InvokeHelper(0x46f, DISPATCH_METHOD, VT_EMPTY, NULL, parms, &Macro, &Description, &HasMenu, &MenuText, &HasShortcutKey, &ShortcutKey, &Category, &StatusBar, &HelpContextID, &HelpFile);
@@ -2334,6 +2335,242 @@ public:
 	{
 		static BYTE parms[] = VTS_BOOL;
 		InvokeHelper(0x95b, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, parms, newValue);
+	}
+	LPDISPATCH get_FileExportConverters()
+	{
+		LPDISPATCH result;
+		InvokeHelper(0xad0, DISPATCH_PROPERTYGET, VT_DISPATCH, (void*)&result, NULL);
+		return result;
+	}
+	LPDISPATCH get_SmartArtLayouts()
+	{
+		LPDISPATCH result;
+		InvokeHelper(0xad4, DISPATCH_PROPERTYGET, VT_DISPATCH, (void*)&result, NULL);
+		return result;
+	}
+	LPDISPATCH get_SmartArtQuickStyles()
+	{
+		LPDISPATCH result;
+		InvokeHelper(0xad5, DISPATCH_PROPERTYGET, VT_DISPATCH, (void*)&result, NULL);
+		return result;
+	}
+	LPDISPATCH get_SmartArtColors()
+	{
+		LPDISPATCH result;
+		InvokeHelper(0xad6, DISPATCH_PROPERTYGET, VT_DISPATCH, (void*)&result, NULL);
+		return result;
+	}
+	LPDISPATCH get_AddIns2()
+	{
+		LPDISPATCH result;
+		InvokeHelper(0xad7, DISPATCH_PROPERTYGET, VT_DISPATCH, (void*)&result, NULL);
+		return result;
+	}
+	BOOL get_PrintCommunication()
+	{
+		BOOL result;
+		InvokeHelper(0xad8, DISPATCH_PROPERTYGET, VT_BOOL, (void*)&result, NULL);
+		return result;
+	}
+	void put_PrintCommunication(BOOL newValue)
+	{
+		static BYTE parms[] = VTS_BOOL;
+		InvokeHelper(0xad8, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, parms, newValue);
+	}
+	void MacroOptions(VARIANT& Macro, VARIANT& Description, VARIANT& HasMenu, VARIANT& MenuText, VARIANT& HasShortcutKey, VARIANT& ShortcutKey, VARIANT& Category, VARIANT& StatusBar, VARIANT& HelpContextID, VARIANT& HelpFile, VARIANT& ArgumentDescriptions)
+	{
+		static BYTE parms[] = VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT;
+		InvokeHelper(0xad2, DISPATCH_METHOD, VT_EMPTY, NULL, parms, &Macro, &Description, &HasMenu, &MenuText, &HasShortcutKey, &ShortcutKey, &Category, &StatusBar, &HelpContextID, &HelpFile, &ArgumentDescriptions);
+	}
+	BOOL get_UseClusterConnector()
+	{
+		BOOL result;
+		InvokeHelper(0xada, DISPATCH_PROPERTYGET, VT_BOOL, (void*)&result, NULL);
+		return result;
+	}
+	void put_UseClusterConnector(BOOL newValue)
+	{
+		static BYTE parms[] = VTS_BOOL;
+		InvokeHelper(0xada, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, parms, newValue);
+	}
+	CString get_ClusterConnector()
+	{
+		CString result;
+		InvokeHelper(0xadb, DISPATCH_PROPERTYGET, VT_BSTR, (void*)&result, NULL);
+		return result;
+	}
+	void put_ClusterConnector(LPCTSTR newValue)
+	{
+		static BYTE parms[] = VTS_BSTR;
+		InvokeHelper(0xadb, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, parms, newValue);
+	}
+	BOOL get_Quitting()
+	{
+		BOOL result;
+		InvokeHelper(0xadc, DISPATCH_PROPERTYGET, VT_BOOL, (void*)&result, NULL);
+		return result;
+	}
+	BOOL get_Dummy22()
+	{
+		BOOL result;
+		InvokeHelper(0xadd, DISPATCH_PROPERTYGET, VT_BOOL, (void*)&result, NULL);
+		return result;
+	}
+	void put_Dummy22(BOOL newValue)
+	{
+		static BYTE parms[] = VTS_BOOL;
+		InvokeHelper(0xadd, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, parms, newValue);
+	}
+	BOOL get_Dummy23()
+	{
+		BOOL result;
+		InvokeHelper(0xade, DISPATCH_PROPERTYGET, VT_BOOL, (void*)&result, NULL);
+		return result;
+	}
+	void put_Dummy23(BOOL newValue)
+	{
+		static BYTE parms[] = VTS_BOOL;
+		InvokeHelper(0xade, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, parms, newValue);
+	}
+	LPDISPATCH get_ProtectedViewWindows()
+	{
+		LPDISPATCH result;
+		InvokeHelper(0xadf, DISPATCH_PROPERTYGET, VT_DISPATCH, (void*)&result, NULL);
+		return result;
+	}
+	LPDISPATCH get_ActiveProtectedViewWindow()
+	{
+		LPDISPATCH result;
+		InvokeHelper(0xae0, DISPATCH_PROPERTYGET, VT_DISPATCH, (void*)&result, NULL);
+		return result;
+	}
+	BOOL get_IsSandboxed()
+	{
+		BOOL result;
+		InvokeHelper(0xae1, DISPATCH_PROPERTYGET, VT_BOOL, (void*)&result, NULL);
+		return result;
+	}
+	BOOL get_SaveISO8601Dates()
+	{
+		BOOL result;
+		InvokeHelper(0xae2, DISPATCH_PROPERTYGET, VT_BOOL, (void*)&result, NULL);
+		return result;
+	}
+	void put_SaveISO8601Dates(BOOL newValue)
+	{
+		static BYTE parms[] = VTS_BOOL;
+		InvokeHelper(0xae2, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, parms, newValue);
+	}
+	VARIANT get_HinstancePtr()
+	{
+		VARIANT result;
+		InvokeHelper(0xae3, DISPATCH_PROPERTYGET, VT_VARIANT, (void*)&result, NULL);
+		return result;
+	}
+	long get_FileValidation()
+	{
+		long result;
+		InvokeHelper(0xae4, DISPATCH_PROPERTYGET, VT_I4, (void*)&result, NULL);
+		return result;
+	}
+	void put_FileValidation(long newValue)
+	{
+		static BYTE parms[] = VTS_I4;
+		InvokeHelper(0xae4, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, parms, newValue);
+	}
+	long get_FileValidationPivot()
+	{
+		long result;
+		InvokeHelper(0xae5, DISPATCH_PROPERTYGET, VT_I4, (void*)&result, NULL);
+		return result;
+	}
+	void put_FileValidationPivot(long newValue)
+	{
+		static BYTE parms[] = VTS_I4;
+		InvokeHelper(0xae5, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, parms, newValue);
+	}
+	BOOL get_ShowQuickAnalysis()
+	{
+		BOOL result;
+		InvokeHelper(0xbb2, DISPATCH_PROPERTYGET, VT_BOOL, (void*)&result, NULL);
+		return result;
+	}
+	void put_ShowQuickAnalysis(BOOL newValue)
+	{
+		static BYTE parms[] = VTS_BOOL;
+		InvokeHelper(0xbb2, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, parms, newValue);
+	}
+	LPDISPATCH get_QuickAnalysis()
+	{
+		LPDISPATCH result;
+		InvokeHelper(0xbb3, DISPATCH_PROPERTYGET, VT_DISPATCH, (void*)&result, NULL);
+		return result;
+	}
+	BOOL get_FlashFill()
+	{
+		BOOL result;
+		InvokeHelper(0xbb4, DISPATCH_PROPERTYGET, VT_BOOL, (void*)&result, NULL);
+		return result;
+	}
+	void put_FlashFill(BOOL newValue)
+	{
+		static BYTE parms[] = VTS_BOOL;
+		InvokeHelper(0xbb4, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, parms, newValue);
+	}
+	BOOL get_EnableMacroAnimations()
+	{
+		BOOL result;
+		InvokeHelper(0xbb5, DISPATCH_PROPERTYGET, VT_BOOL, (void*)&result, NULL);
+		return result;
+	}
+	void put_EnableMacroAnimations(BOOL newValue)
+	{
+		static BYTE parms[] = VTS_BOOL;
+		InvokeHelper(0xbb5, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, parms, newValue);
+	}
+	BOOL get_ChartDataPointTrack()
+	{
+		BOOL result;
+		InvokeHelper(0xbb6, DISPATCH_PROPERTYGET, VT_BOOL, (void*)&result, NULL);
+		return result;
+	}
+	void put_ChartDataPointTrack(BOOL newValue)
+	{
+		static BYTE parms[] = VTS_BOOL;
+		InvokeHelper(0xbb6, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, parms, newValue);
+	}
+	BOOL get_FlashFillMode()
+	{
+		BOOL result;
+		InvokeHelper(0xbb7, DISPATCH_PROPERTYGET, VT_BOOL, (void*)&result, NULL);
+		return result;
+	}
+	void put_FlashFillMode(BOOL newValue)
+	{
+		static BYTE parms[] = VTS_BOOL;
+		InvokeHelper(0xbb7, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, parms, newValue);
+	}
+	BOOL get_MergeInstances()
+	{
+		BOOL result;
+		InvokeHelper(0xbb8, DISPATCH_PROPERTYGET, VT_BOOL, (void*)&result, NULL);
+		return result;
+	}
+	void put_MergeInstances(BOOL newValue)
+	{
+		static BYTE parms[] = VTS_BOOL;
+		InvokeHelper(0xbb8, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, parms, newValue);
+	}
+	BOOL get_EnableCheckFileExtensions()
+	{
+		BOOL result;
+		InvokeHelper(0xc56, DISPATCH_PROPERTYGET, VT_BOOL, (void*)&result, NULL);
+		return result;
+	}
+	void put_EnableCheckFileExtensions(BOOL newValue)
+	{
+		static BYTE parms[] = VTS_BOOL;
+		InvokeHelper(0xc56, DISPATCH_PROPERTYPUT, VT_EMPTY, NULL, parms, newValue);
 	}
 
 	// _Application 属性

@@ -1,5 +1,6 @@
 // 从类型库向导中用“添加类”创建的计算机生成的 IDispatch 包装器类
 
+//#import "C:\\Program Files\\Microsoft Office\\Office15\\EXCEL.EXE" no_namespace
 // CWorksheet 包装器类
 
 class CWorksheet : public COleDispatchDriver
@@ -848,6 +849,12 @@ public:
 	{
 		static BYTE parms[] = VTS_I4 VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT VTS_VARIANT;
 		InvokeHelper(0x9bd, DISPATCH_METHOD, VT_EMPTY, NULL, parms, Type, &Filename, &Quality, &IncludeDocProperties, &IgnorePrintAreas, &From, &To, &OpenAfterPublish, &FixedFormatExtClassPtr);
+	}
+	long get_PrintedCommentPages()
+	{
+		long result;
+		InvokeHelper(0xb29, DISPATCH_PROPERTYGET, VT_I4, (void*)&result, NULL);
+		return result;
 	}
 
 	// _Worksheet 属性
