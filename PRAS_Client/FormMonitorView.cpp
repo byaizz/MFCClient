@@ -111,7 +111,7 @@ void CFormMonitorView::OnBnClickedButton1()
 		MessageBox(_T("≥ı ºªØexcel ß∞‹"));
 		return;
 	}
-	if (excel.Open(_T("E:\\test_by.xlsx")))
+	if (excel.OpenFromTemplate(_T("E:\\test_by.xlsx")))
 	{
 		excel.Test1();
 		excel.SaveAsPDF(_T("E:\\test_by.pdf"));

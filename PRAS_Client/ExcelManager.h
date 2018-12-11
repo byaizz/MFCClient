@@ -6,6 +6,8 @@
 #include "CWorkbook.h"
 #include "CWorksheet.h"
 #include "CRange.h"
+#include "CPageSetup.h"
+#include "CFont0.h"
 
 
 class ExcelManager
@@ -13,6 +15,14 @@ class ExcelManager
 public:
 	ExcelManager(void);
 	~ExcelManager(void);
+	
+	//************************************************************************
+	// Method:		CheckVersion	检查excel版本，当前支持2010(14.0),2013(15.0)
+	// Returns:		bool
+	// Author:		byshi
+	// Date:		2018-12-11	
+	//************************************************************************
+	bool CheckVersion();
 	
 	//************************************************************************
 	// Method:		Close
