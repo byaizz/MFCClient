@@ -469,6 +469,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Excel_Header\CFont0.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Excel_Header\CPageSetup.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Excel_Header\CRange.h"
 				>
 			</File>
