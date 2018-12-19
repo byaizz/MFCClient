@@ -69,14 +69,6 @@ public:
 	bool GetCellValue(COleVariant rowIndex, COleVariant columnIndex,VARIANT &data);
 	
 	//************************************************************************
-	// Method:		Init
-	// Returns:		bool
-	// Author:		byshi
-	// Date:		2018-12-7	
-	//************************************************************************
-	bool Init();
-	
-	//************************************************************************
 	// Method:		IsFileExist		判断文件或文件夹是否存在
 	// Returns:		bool
 	// Parameter:	const CString & fileName	文件路径名
@@ -143,8 +135,8 @@ public:
 	//************************************************************************
 	// Method:		SetCellsValue	批量写入多个单元格数据
 	// Returns:		bool
-	// Parameter:	COleVariant startCell	起始单元格(左上角单元格),例如:"B5"
-	// Parameter:	COleVariant endCell		起始单元格(左上角单元格),例如:"C7"
+	// Parameter:	COleVariant startCell	起始单元格(左上角单元格),例如:"B5"或"$B$5"
+	// Parameter:	COleVariant endCell		起始单元格(左上角单元格),例如:"C7"或"$C$7"
 	// Parameter:	COleSafeArray & iTwoDimArray	二维数组(要写入的数据)
 	// Author:		byshi
 	// Date:		2018-12-7	

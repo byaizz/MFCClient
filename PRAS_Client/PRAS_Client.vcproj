@@ -497,11 +497,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\ExcelManager.cpp"
+				RelativePath=".\Excel_Header\ExcelManager.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ExcelManager.h"
+				RelativePath=".\Excel_Header\ExcelManager.h"
 				>
 			</File>
 		</Filter>
