@@ -106,11 +106,6 @@ void CFormMonitorView::OnBnClickedButton1()
 	m_buttonControl.EnableWindow(FALSE);
 	// TODO: 在此添加控件通知处理程序代码
 	ExcelManager excel;
-	if (!excel.Init())
-	{
-		MessageBox(_T("初始化excel失败"));
-		return;
-	}
 	if (excel.OpenFromTemplate(_T("E:\\test_by.xlsx")))
 	{
 		excel.Test1();
