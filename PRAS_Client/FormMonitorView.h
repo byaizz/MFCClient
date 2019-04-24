@@ -2,6 +2,7 @@
 
 #include "GridCtrl.h"
 #include "afxwin.h"
+#include "d:\vsprojects\pras_client\gridctrlhead\gridctrl.h"
 
 // CFormMonitorView ¥∞ÃÂ ”Õº
 
@@ -34,6 +35,16 @@ private:
 	afx_msg void OnTcnSelchangeTab1(NMHDR *pNMHDR, LRESULT *pResult);
 	afx_msg void OnBnClickedButton1();
 	CButton m_buttonControl;
+	afx_msg void OnEnChangeEdit1();
+	CString m_edit1;
+	CString m_edit2;
+	virtual BOOL PreTranslateMessage(MSG* pMsg);
+	CEdit m_editCtrl1;
+	CEdit m_editCtrl2;
+	CEdit m_editCtrl3;
+	CEdit m_editCtrl4;
+	CEdit m_editCtrl5;
+    CGridCtrl m_testGrid;
 };
 
 

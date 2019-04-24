@@ -6,6 +6,8 @@
 #include "FormMonitorView.h"
 #include "ExcelManager.h"
 
+#define ONE_DECIMAL	1
+#define TWO_DECIMAL	2
 
 // CFormMonitorView
 
@@ -13,6 +15,8 @@ IMPLEMENT_DYNCREATE(CFormMonitorView, CFormView)
 
 CFormMonitorView::CFormMonitorView()
 	: CFormView(CFormMonitorView::IDD)
+	, m_edit1(_T(""))
+	, m_edit2(_T(""))
 {
 
 }
@@ -23,13 +27,22 @@ CFormMonitorView::~CFormMonitorView()
 
 void CFormMonitorView::DoDataExchange(CDataExchange* pDX)
 {
-	CFormView::DoDataExchange(pDX);
-	DDX_GridControl(pDX, IDC_CUSTOM_GRID_SLAB, m_GridSlabInfo);
-	DDX_Control(pDX, IDC_BUTTON1, m_buttonControl);
+    CFormView::DoDataExchange(pDX);
+    DDX_GridControl(pDX, IDC_CUSTOM_GRID_SLAB, m_GridSlabInfo);
+    DDX_Control(pDX, IDC_BUTTON1, m_buttonControl);
+    DDX_Text(pDX, IDC_EDIT1, m_edit1);
+    DDX_Text(pDX, IDC_EDIT2, m_edit2);
+    DDX_Control(pDX, IDC_EDIT1, m_editCtrl1);
+    DDX_Control(pDX, IDC_EDIT2, m_editCtrl2);
+    DDX_Control(pDX, IDC_EDIT3, m_editCtrl3);
+    DDX_Control(pDX, IDC_EDIT4, m_editCtrl4);
+    DDX_Control(pDX, IDC_EDIT5, m_editCtrl5);
+    DDX_Control(pDX, IDC_CUSTOM1, m_testGrid);
 }
 
 BEGIN_MESSAGE_MAP(CFormMonitorView, CFormView)
 	ON_BN_CLICKED(IDC_BUTTON1, &CFormMonitorView::OnBnClickedButton1)
+	ON_EN_CHANGE(IDC_EDIT1, &CFormMonitorView::OnEnChangeEdit1)
 END_MESSAGE_MAP()
 
 
@@ -57,6 +70,8 @@ void CFormMonitorView::OnInitialUpdate()
 	CFormView::OnInitialUpdate();
 
 	// TODO: 在此添加专用代码和/或调用基类
+//     m_testGrid.SetColumnCount(3);
+//     m_testGrid.SetRowCount(2);
 
 	//设置表格属性
  	m_GridSlabInfo.SetListMode(TRUE);//设置是否为排序模式
@@ -99,6 +114,12 @@ void CFormMonitorView::OnInitialUpdate()
 	int height = m_GridSlabInfo.GetRowCount()*m_GridSlabInfo.GetRowHeight(0);
 	m_GridSlabInfo.MoveWindow(100,100,width,height);
 
+	m_editCtrl1.SetWindowText(_T("12345"));
+	m_editCtrl2.SetWindowText(_T("12345"));
+	m_editCtrl3.SetWindowText(_T("12345"));
+	m_editCtrl4.SetWindowText(_T("12345"));
+	m_editCtrl5.SetWindowText(_T("12345"));
+
 }
 
 void CFormMonitorView::OnBnClickedButton1()
@@ -117,4 +138,87 @@ void CFormMonitorView::OnBnClickedButton1()
 // 		excel.Test();
 // 	}
 	m_buttonControl.EnableWindow(TRUE);
+}
+
+void CFormMonitorView::OnEnChangeEdit1()
+{
+	// TODO:  如果该控件是 RICHEDIT 控件，则它将不会
+	// 发送该通知，除非重写 CFormView::OnInitDialog()
+	// 函数并调用 CRichEditCtrl().SetEventMask()，
+	// 同时将 ENM_CHANGE 标志“或”运算到掩码中。
+
+	// TODO:  在此添加控件通知处理程序代码
+// 	UpdateData(TRUE);
+// 	m_edit2 = m_edit1;
+// 	UpdateData(FALSE);
+	
+}
+
+BOOL CFormMonitorView::PreTranslateMessage(MSG* pMsg)
+{
+	// TODO: 在此添加专用代码和/或调用基类
+	if (WM_LBUTTONUP == pMsg->message)
+	{
+		const int nSize(5);
+		int nNumber[nSize] = {IDC_EDIT1,
+		IDC_EDIT2,
+		IDC_EDIT3,
+		IDC_EDIT4,
+		IDC_EDIT5};
+
+		for (int i = 0; i < nSize; i++)
+		{
+			if (pMsg->hwnd == ((CEdit*)GetDlgItem(nNumber[i]))->m_hWnd)
+			{
+				((CEdit*)GetDlgItem(nNumber[i]))->SetSel(0, -1);
+			}
+		}	
+	}
+#if 1
+	if (   (WM_KEYFIRST <= pMsg->message)
+		&& (WM_KEYLAST  >= pMsg->message))
+	{  
+		if(   (VK_RETURN == pMsg->wParam)
+			&& (WM_KEYUP == pMsg->message))
+		{
+			if (GetFocus() == GetDlgItem(IDC_EDIT1) ||
+				GetFocus() == GetDlgItem(IDC_EDIT2) ||
+				GetFocus() == GetDlgItem(IDC_EDIT3) ||
+				GetFocus() == GetDlgItem(IDC_EDIT4))
+			{
+				bool bFlag(true);
+				if (GetFocus() == GetDlgItem(IDC_EDIT1)
+					&& bFlag)
+				{
+					bFlag = false;
+					m_editCtrl2.SetFocus();
+					m_editCtrl2.SetSel(0, -1);
+				}
+				if (GetFocus() == GetDlgItem(IDC_EDIT2)
+					&& bFlag)
+				{
+					bFlag = false;
+					m_editCtrl3.SetFocus();
+					m_editCtrl3.SetSel(0, -1);
+				}
+				if (GetFocus() == GetDlgItem(IDC_EDIT3)
+					&& bFlag)
+				{
+					bFlag = false;
+					m_editCtrl4.SetFocus();
+					m_editCtrl4.SetSel(0, -1);
+				}
+				if (GetFocus() == GetDlgItem(IDC_EDIT4)
+					&& bFlag)
+				{
+					bFlag = false;
+					m_editCtrl5.SetFocus();
+					m_editCtrl5.SetSel(0, -1);
+				}
+			}
+
+		}
+	}
+#endif
+	return CFormView::PreTranslateMessage(pMsg);
 }

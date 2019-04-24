@@ -22,6 +22,12 @@
 #define IDC_STATIC_TIME                 1007
 #define IDC_CUSTOM_GRID_SLAB            1008
 #define IDC_BUTTON1                     1009
+#define IDC_EDIT1                       1010
+#define IDC_EDIT2                       1011
+#define IDC_EDIT3                       1012
+#define IDC_EDIT4                       1013
+#define IDC_EDIT5                       1014
+#define IDC_CUSTOM1                     1015
 
 // Next default values for new objects
 // 
@@ -29,7 +35,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        132
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1010
+#define _APS_NEXT_CONTROL_VALUE         1016
 #define _APS_NEXT_SYMED_VALUE           109
 #endif
 #endif
